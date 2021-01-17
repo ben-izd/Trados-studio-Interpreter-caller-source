@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <UsingTask TaskName="Sdl.Core.PluginFramework.Build.CreatePluginManifestTask" AssemblyFile="Sdl.Core.PluginFramework.BuildTasks.dll" />
+
+  <Target Name="GeneratePluginManifestTarget" AfterTargets="AfterBuild">
+    <CreatePluginManifestTask
+      ProjectDirectory="$(ProjectDir)"
+      AssemblyFilePath="$(TargetPath)"
+      PluginResxFilePath="$(ProjectDir)PluginResources.resx"
+      ReferenceCopyLocalPaths="@(ReferenceCopyLocalPaths)"
+      ReferenceSatellitePaths="@(ReferenceSatellitePaths)"
+      CreatePluginPackage="$(CreatePluginPackage)"
+      DeployPluginPackage="$(DeployPluginPackage)"
+      PluginDeploymentPath="$(PluginDeploymentPath)"
+      />
+  </Target>
+</Project>
